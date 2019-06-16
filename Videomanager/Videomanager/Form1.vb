@@ -87,98 +87,6 @@ Public Class Form1
                 If Not copyBGW.IsBusy Then
                     copyBGW.RunWorkerAsync({KameraNr})
                 End If
-                'Label8.Visible = True
-                'Dim vidcount As Integer = 0
-                'Dim piccount As Integer = 0
-                'Dim copiedBytes As Double = 0
-
-                'Try
-                '    Dim sizeInBytes As Long
-                '    Dim sizeInGigaBytes As Double
-                '    For Each Einzelvideo In Videos
-                '        sizeInBytes += Einzelvideo.Length
-                '    Next
-                '    For Each Einzelfoto In Fotos
-                '        sizeInBytes += Einzelfoto.Length
-                '    Next
-                '    ProgressBar1.Maximum = sizeInBytes / 1000000
-                '    sizeInGigaBytes = sizeInBytes / Kilo / Kilo / Kilo
-                '    sizeInGigaBytes = Math.Round(sizeInGigaBytes, 2)
-                '    Label8.Text = sizeInGigaBytes & " GB"
-                '    ProgressBar1.Value = ProgressBar1.Maximum / 100
-                '    Me.Refresh()
-
-                '                    For Each Einzelvideo In Videos
-                '                        If Einzelvideo.Extension = ".mp4" Or Einzelvideo.Extension = ".MP4" Then 'Filtert Dateien raus, die kein mp4-Video sind.
-                '                            Dim Aufnahmedatum As String = Einzelvideo.CreationTime.ToString("yyMMdd_HHmm")
-                '                            Dim Ausgabename As String = Zielpfad & "/" & Aufnahmedatum & "_" & KameraNr & ".mp4"
-
-                '                            'Kopiervorgang mit Zähler bei bereits existierenden Dateinamen
-                '                            Dim i As Integer = 0
-                'line1:
-                '                            If Not File.Exists(Ausgabename) Then
-                '                                My.Computer.FileSystem.CopyFile(Einzelvideo.FullName, Ausgabename)
-                '                                i = 0
-                '                            ElseIf i >= 1800 Then
-                '                                MsgBox("Datei " & Path.GetFileName(Ausgabename) & " existiert bereits!" & vbCrLf & "Bitte prüfen und manuell kopieren!")
-                '                                vidcount -= 1
-                '                            Else
-                '                                i += 1
-                '                                Ausgabename = Zielpfad & "/" & Aufnahmedatum & "_" & i & "_" & KameraNr & ".mp4"
-                '                                GoTo line1
-                '                            End If
-                '                        End If
-                '                        copiedBytes += Einzelvideo.Length / Kilo / Kilo / Kilo
-                '                        Try
-                '                            ProgressBar1.Value = Einzelvideo.Length / 1000000
-                '                        Catch
-                '                            ProgressBar1.Value = ProgressBar1.Maximum
-                '                        End Try
-
-                '                        Label8.Text = Math.Round(copiedBytes, 2) & " GB von " & sizeInGigaBytes & " GB"
-                '                        vidcount += 1
-                '                        Me.Refresh()
-                '                    Next
-
-                '                    For Each EinzelFoto In Fotos
-                '                        If EinzelFoto.Extension = ".jpg" Or EinzelFoto.Extension = ".JPG" Then 'Filtert Dateien raus, die kein mp4-Video sind.
-                '                            Dim Aufnahmedatum As String = EinzelFoto.CreationTime.ToString("yyMMdd_HHmm")
-                '                            Dim Ausgabename As String = Zielpfad & "/" & "PIC_" & Aufnahmedatum & "_" & KameraNr & ".jpg"
-
-                '                            'Kopiervorgang mit Zähler bei bereits existierenden Dateinamen
-                '                            Dim i As Integer = 0
-                'line2:
-                '                            If Not File.Exists(Ausgabename) Then
-                '                                My.Computer.FileSystem.CopyFile(EinzelFoto.FullName, Ausgabename)
-                '                                i = 0
-                '                            ElseIf i >= 1800 Then
-                '                                MsgBox("Datei " & Path.GetFileName(Ausgabename) & " existiert bereits!" & vbCrLf & "Bitte prüfen und manuell kopieren!")
-                '                                piccount -= 1
-                '                            Else
-                '                                i += 1
-                '                                Ausgabename = Zielpfad & "/" & "PIC_" & Aufnahmedatum & "_" & i & "_" & KameraNr & ".jpg"
-                '                                GoTo line2
-                '                            End If
-                '                        End If
-                '                        piccount += 1
-                '                        copiedBytes += EinzelFoto.Length / Kilo / Kilo / Kilo
-                '                        Try
-                '                            ProgressBar1.Value = EinzelFoto.Length / 1000000
-                '                        Catch
-                '                            ProgressBar1.Value = ProgressBar1.Maximum
-                '                        End Try
-                '                    Next
-
-
-                'Catch ex As Exception
-                '    MsgBox(ex.Message)
-                'End Try
-                'MsgBox("Kopiervorgang abgeschlossen!" & vbCrLf & "Es wurden:" & vbCrLf & vidcount & " Videos und " & vbCrLf & piccount & " Fotos kopiert." & vbCrLf & "(" & Math.Round(copiedBytes, 2) & " GB)")
-                'copied = True
-                'Label8.Visible = False
-                'ShowFreeSpace()
-                'Show_Files()
-                'Show_Files2()
             Else
                 MsgBox("Keine Rohdaten im Quellordner!")
             End If
@@ -465,14 +373,6 @@ line2:
         AddHandler watchDSTfolder.Created, AddressOf Show_Files2
         AddHandler watchDSTfolder.Deleted, AddressOf Show_Files2
 
-
-
     End Sub
-
-    'Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
-    '    'sekündliche Aktualisierung der Ordnerinhalte
-    '    Show_Files()
-    '    Show_Files2()
-    'End Sub
 
 End Class
